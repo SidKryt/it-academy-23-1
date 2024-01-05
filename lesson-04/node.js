@@ -1,32 +1,21 @@
-console.log(global);
-
-function sayHi() {
-	return 10 + 30;
-}
-
-console.log(sayHi())
-
 const fs = require('fs-extra');
 
-fs.ensureDirSync('NewDir')
+const foldersPath = "/vscode/it-academy-23-1/lesson-04/"
+const folder1Path = foldersPath + "Folder1/"
+const folder2Path = foldersPath + "Folder2/"
+const folder3Path = foldersPath + "Folder3/"
+const fileName = "text.txt"
 
-const file = './NewDir/file.txt'
-
-fs.ensureFileSync(file)
-
-fs.ensureDirSync('Dir2')
-
-fs.moveSync('./NewDir/file.txt', './Dir2/file.txt')
-
-fs.ensureDirSync('Folder')
-
-fs.copySync('./Dir2/file.txt', './Folder/file.txt')
-
-fs.removeSync('./Dir2')
-
-fs.removeSync('./Folder')
-
-fs.removeSync('./NewDir' )
-
+fs.ensureDirSync(folder1Path)
+fs.ensureFileSync(folder1Path + fileName)
+fs.ensureDirSync(folder2Path)
+fs.moveSync(folder1Path + fileName, folder2Path + fileName, {owerwrite: true})
+fs.ensureDirSync(folder3Path)
+fs.copyFileSync(folder2Path + fileName, folder3Path + fileName)
+fs.removeSync(folder2Path + fileName)
+fs.removeSync(folder3Path + fileName)
+fs.removeSync(folder1Path)
+fs.removeSync(folder2Path)
+fs.removeSync(folder3Path)
 
 
